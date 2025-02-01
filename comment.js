@@ -10,7 +10,7 @@ let btnUpdate = document.querySelector(".btn-update")
 function commentFun(){
     console.log("Hi")
     if(title.value === "" || textArea.value === ""){
-        alert("You have to write the title")
+        alert("You have to write the info")
     }
     else{
         let objInput = {
