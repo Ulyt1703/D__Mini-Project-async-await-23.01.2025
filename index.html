@@ -10,19 +10,29 @@
     
     <h1 class="title-blog">Blog</h1> 
 
-    <form id="createPostForm">
-      <input type="text" id="titleInput" placeholder="Title" required> 
-      <textarea id="contentInput" placeholder="Description" required></textarea> 
-      <button type="submit" class="btn-create">Create a post</button> 
-    </form> 
+    <div id="createPostForm">
+      <input class="form-input" type="text" id="titleInput" placeholder="Title" required> 
+      <textarea class="form-textarea" id="contentInput" placeholder="Description" required></textarea> 
+      <button type="submit" class="form-btn">Create a post</button> 
+    </div> 
+
+    <div class="box__btn-settings">
+      <button type="button" class="btn-delete">Delete</button>
+      <button type="button" class="btn-update">Update</button>
+    </div>
 
     <div id="postsContainer">
       <ul class="box-post"></ul>
     </div> 
 
+    <div class="new-block">
+      <p class="txt-data"></p>
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
     <script src="./script.js"></script>
+    <script src="./comment.js"></script>
 </body>
 </html>
