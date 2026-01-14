@@ -15,33 +15,36 @@
 
 
 
-// Отримання списку постів 
-async function getPosts() {
-    try { 
-    }
-          catch (error) { 
-      console.error(error); 
-    } 
-  } 
+let boxPost = document.querySelector('.box-post')
 
-async function newGetPosts(){
-  let postsContainer = document.getElementById("postsContainer")
-  let boxPost = document.querySelector(".box-post")
-  let url = await fetch('https://jsonplaceholder.typicode.com/posts')
-  let varResponse = await url.json()
-  console.log(varResponse)
-  varResponse.forEach(article => {
-    let bodyID = document.createElement("li")
-    let bodyTitle = document.createElement("li")
-    let bodyArticle = document.createElement("li")
-    bodyID.textContent = article.id
-    bodyArticle.textContent = article.body
-    bodyTitle.textContent = article.title
-    boxPost.append(bodyID)
-    boxPost.append(bodyTitle)
-    boxPost.append(bodyArticle)
-    postsContainer.appendChild(boxPost)
-  })
+async function getAllPosts() {
+    try {
+        let response = await fetch('http://localhost:3000/posts')
+        let posts = await response.json()
+
+        boxPost.innerHTML = ''
+
+        posts.forEach(post => {
+            let div = document.createElement('div')
+            let liId = document.createElement('li')
+            let liTitle = document.createElement('li')
+            let liBody = document.createElement('li')
+
+            liId.textContent = `ID: ${post.id}`
+            liTitle.textContent = post.title
+            liBody.textContent = post.body
+
+            div.style.marginBottom = '20px'
+            div.style.borderBottom = '1px solid white'
+            liTitle.style.fontWeight = 'bold'
+            liTitle.style.fontSize = '18px'
+
+            div.append(liId, liTitle, liBody)
+            boxPost.append(div)
+        })
+    } catch (error) {
+        console.error(error)
+    }
 }
 
-newGetPosts()
+getAllPosts()
